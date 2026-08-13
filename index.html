@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Data Hygiene Kit</title>
+<meta name="description" content="Offline CSV triage for leads and companies exports: normalize, dedupe, and score enrichment-readiness — entirely in your browser.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">🧹</span>
+      Lead Data Hygiene Kit
+    </div>
+    <span class="privacy-badge"><span class="dot"></span> Runs 100% locally — nothing leaves your browser</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1>Clean, dedupe, and score your leads CSV before it hits the CRM.</h1>
+    <p>Import a raw leads or companies export, map its columns, catch near-duplicates, and see exactly
+       which records are enrichment-ready versus missing the fields a paid vendor needs — all client-side,
+       with zero network calls.</p>
+  </section>
+
+  <nav class="stepper" aria-label="Progress">
+    <div class="step active" data-step="1"><span class="num">1</span> Import</div>
+    <div class="step" data-step="2"><span class="num">2</span> Map columns</div>
+    <div class="step" data-step="3"><span class="num">3</span> Review, dedupe &amp; export</div>
+  </nav>
+
+  <!-- STEP 1: IMPORT -->
+  <section class="panel" id="importPanel">
+    <div class="panel-header">
+      <div>
+        <h2>1. Load a CSV</h2>
+        <div class="sub">Comma, semicolon, or tab delimited. Quoted fields and embedded newlines are handled.</div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div id="importError" class="hidden"></div>
+
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload a CSV file">
+        <div class="icon">📄</div>
+        <div><span class="cta">Click to choose a file</span> or drag and drop it here</div>
+        <div class="small-note" style="margin-top:6px;">.csv, .tsv, or .txt — parsed entirely in this browser tab</div>
+        <input type="file" id="fileInput" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values,text/plain">
+      </div>
+
+      <div class="upload-actions">
+        <span class="divider-word">or</span>
+        <button class="btn btn-primary" id="loadSampleBtn">▶ Load sample data (78 messy rows)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: COLUMN MAPPING -->
+  <section class="panel hidden" id="mappingPanel">
+    <div class="panel-header">
+      <div>
+        <h2>2. Confirm column mapping</h2>
+        <div class="sub" id="sourceLabel"></div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <p class="small-note" id="parseSummary" style="margin-top:0;"></p>
+      <div class="alert alert-info">
+        <div><strong>Nothing is assumed.</strong> We auto-suggest matches from your header names, but every
+        mapping below is yours to confirm or change before any cleaning, dedup, or scoring runs. Fields marked
+        * are used for duplicate detection and the readiness score.</div>
+      </div>
+      <div class="mapping-grid" id="mappingGrid"></div>
+      <div style="margin-top:18px; display:flex; gap:10px;">
+        <button class="btn btn-primary" id="confirmMappingBtn">Confirm mapping &amp; continue →</button>
+        <button class="btn btn-ghost" id="resetBtn">Start over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: WORKSPACE -->
+  <section class="hidden" id="workspace">
+
+    <div id="perfWarning" class="hidden"></div>
+
+    <div class="stat-row" id="statRow"></div>
+
+    <!-- Malformed rows -->
+    <section class="panel hidden" id="malformedPanel">
+      <div class="panel-header">
+        <div>
+          <h2>Malformed rows</h2>
+          <div class="sub">Flagged, not silently dropped — fix these in your source file and re-import if needed.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="malformed-list" id="malformedList"></div>
+      </div>
+    </section>
+
+    <!-- Data table -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Cleaned data preview</h2>
+          <div class="sub">Normalized company names, extracted domains, and enrichment-readiness per row.</div>
+        </div>
+      </div>
+      <div class="panel-body no-pad">
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Company (normalized)</th><th>Domain</th><th>Email</th><th>Contact</th>
+                <th>Title</th><th>Score</th><th>Ready?</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="dataTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedup review -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Duplicate review</h2>
+          <div class="sub">Every merge or "keep separate" decision is explicit and undoable — nothing is auto-merged.</div>
+        </div>
+        <div class="field-inline">
+          <label for="thresholdRange">Fuzzy match threshold</label>
+          <input type="range" id="thresholdRange" min="0.5" max="1" step="0.01" value="0.85">
+          <input type="number" id="thresholdNumber" min="0.5" max="1" step="0.01" value="0.85">
+        </div>
+      </div>
+      <div class="panel-body">
+        <div id="dedupGroups"></div>
+      </div>
+    </section>
+
+    <!-- Rubric editor -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Enrichment-readiness rubric</h2>
+          <div class="sub">Fully visible, fully editable — this is exactly what the "Score" column above is computing.</div>
+        </div>
+      </div>
+      <div class="panel-body no-pad">
+        <div style="padding: 4px 20px 18px;">
+          <table class="rubric-table">
+            <thead><tr><th>Include</th><th>Field</th><th>Weight</th><th>Required for "ready"</th></tr></thead>
+            <tbody id="rubricBody"></tbody>
+          </table>
+          <p class="small-note" id="addRubricNote" style="margin-top:10px;">
+            Weights don't need to sum to 100 — the score is normalized against the weight of included fields only.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Export -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Export</h2>
+          <div class="sub">Downloads are generated as in-browser Blobs — no server round-trip, no upload.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="flex-gap">
+          <button class="btn btn-good" id="exportCleanedBtn">⬇ Download cleaned.csv (<span id="exportCleanedCount">0</span>)</button>
+          <button class="btn btn-primary" id="exportEnrichmentBtn">⬇ Download needs-enrichment.csv (<span id="exportEnrichmentCount">0</span>)</button>
+          <button class="btn btn-ghost" id="resetBtn2" onclick="document.getElementById('resetBtn').click()">Start over</button>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="badge-row">
+      <span class="privacy-badge"><span class="dot"></span> Zero network calls</span>
+      <span class="privacy-badge"><span class="dot"></span> No tracking, cookies, or fingerprinting</span>
+      <span class="privacy-badge"><span class="dot"></span> No live enrichment or IP/domain lookups</span>
+    </div>
+    <div>Lead Data Hygiene Kit — a pure offline CSV triage tool. Analyzes only the data you already have. MIT licensed.</div>
+  </div>
+</footer>
+
+<script src="js/csv.js"></script>
+<script src="js/normalize.js"></script>
+<script src="js/dedup.js"></script>
+<script src="js/rubric.js"></script>
+<script src="js/core.js"></script>
+<script src="js/sample-data.js"></script>
+<script src="js/app-state.js"></script>
+<script src="js/app-import.js"></script>
+<script src="js/app-render.js"></script>
+<script src="js/app-actions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

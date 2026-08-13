@@ -1,0 +1,79 @@
+Company Name,Website,Email,First Name,Last Name,Title,Phone,Industry,Employees,Country
+Acme Inc.,https://www.acme.com,jane.doe@acme.com,Jane,Doe,VP Marketing,555-0101,Software,250,United States
+"ACME, LLC",acme.com,j.doe@acme.com,Jane,Doe,VP Marketing,555-0101,Software,250,USA
+Globex Corporation,globex.com,bob@globex.com,Bob,Smith,CEO,555-0102,Manufacturing,900,United States
+GLOBEX CORP,www.globex.com,,Bob,Smith,,,,,
+Initech Ltd,initech.com,peter@initech.com,Peter,Gibbons,Software Engineer,,Technology,45,United States
+initech,,milton@initech.com,Milton,Waddams,,555-0104,,,
+"Umbrella, Inc",umbrellacorp.com,,Alice,Marcus,Director of Ops,555-0105,Pharmaceuticals,3000,United States
+Umbrella Inc.,umbrellacorp.com,alice.marcus@umbrellacorp.com,Alice,Marcus,Director of Operations,555-0105,Pharma,3000,USA
+Stark Industries,starkindustries.com,tony@starkindustries.com,Tony,Stark,CEO,555-0106,Defense,15000,United States
+Wayne Enterprises,wayneenterprises.com,bruce@wayneenterprises.com,Bruce,Wayne,Chairman,555-0107,Conglomerate,,United States
+wayne enterprises,wayneenterprises.com,,,,,,,,
+Soylent Corp,soylent.com,,,,,,,,
+Soylent Corporation,soylent.com,info@soylent.com,,,Sales,555-0108,Food,80,United States
+Hooli,hooli.com,gavin@hooli.com,Gavin,Belson,CEO,555-0109,Technology,1200,United States
+Pied Piper,piedpiper.com,richard@piedpiper.com,Richard,Hendricks,Founder,555-0110,Technology,12,United States
+Pied  Piper Inc.,piedpiper.com,,Richard,Hendricks,,,,,
+Massive Dynamic,massivedynamic.com,nina@massivedynamic.com,Nina,Sharp,COO,555-0111,Biotech,4500,United States
+Oscorp Industries,oscorp.com,norman@oscorp.com,Norman,Osborn,President,555-0112,Chemicals,2200,United States
+OSCORP,oscorp.com,,,,,,,,
+Cyberdyne Systems,cyberdyne.com,miles@cyberdyne.com,Miles,Dyson,CTO,555-0113,Robotics,600,United States
+Aperture Science,aperturescience.com,cave@aperture.com,Cave,Johnson,Founder,555-0114,Research,300,United States
+Black Mesa,blackmesa.com,gordon@blackmesa.com,Gordon,Freeman,Researcher,,Research,,
+Weyland-Yutani Corp,weylandyutani.com,,,,,,,,
+Weyland Yutani,weylandyutani.com,carter@weylandyutani.com,Carter,Burke,Exec,555-0115,Aerospace,8000,United States
+Tyrell Corporation,tyrell.com,eldon@tyrell.com,Eldon,Tyrell,CEO,555-0116,Biotech,,United States
+Genco Pura Olive Oil,gencoolive.com,,,,,,,,
+Vandelay Industries,vandelay.com,art@vandelay.com,Art,Vandelay,Owner,555-0117,Import/Export,15,United States
+Prestige Worldwide,prestigeworldwide.com,,brennan@prestigeworldwide.com,,,,,,
+Dunder Mifflin Paper Co,dundermifflin.com,michael@dundermifflin.com,Michael,Scott,Regional Manager,555-0118,Paper,65,United States
+Dunder Mifflin,dundermifflin.com,,,,,,,,
+Sterling Cooper,sterlingcooper.com,don@sterlingcooper.com,Don,Draper,Creative Director,555-0119,Advertising,120,United States
+Wonka Industries,wonka.com,willy@wonka.com,Willy,Wonka,Founder,555-0120,Confectionery,,United States
+Contoso Ltd,contoso.com,alex@contoso.com,Alex,Rivera,IT Director,555-0121,Retail,900,United States
+CONTOSO LIMITED,www.contoso.com,,,,,,,,
+Fabrikam Inc,fabrikam.com,sam@fabrikam.com,Sam,Lee,Ops Manager,555-0122,Logistics,340,United States
+Northwind Traders,northwindtraders.com,,pat@northwindtraders.com,,,,,,
+Adventure Works,adventure-works.com,taylor@adventure-works.com,Taylor,Brooks,Marketing Manager,555-0123,Retail,220,United States
+Contoso Group,contoso.com,,,,,,,,
+Zebra Analytics,zebra-analytics.io,quinn@zebra-analytics.io,Quinn,Park,Data Lead,555-0124,Analytics,60,Canada
+Zebra Analytics Inc,zebra-analytics.io,,,,,,,,
+Blue Sun Corporation,bluesun.com,,,,,,,,
+Blue Sun Corp,bluesun.com,mal@bluesun.com,Malcolm,Reynolds,Captain,555-0125,Aerospace,,United States
+Gringotts Financial,gringotts.co.uk,,,,,,,,
+Gringotts,gringotts.co.uk,griphook@gringotts.co.uk,Griphook,,Manager,,Financial Services,900,United Kingdom
+Bluth Company,bluthcompany.com,michael@bluthcompany.com,Michael,Bluth,President,555-0126,Real Estate,50,United States
+Los Pollos Hermanos,lospolloshermanos.com,gus@lospolloshermanos.com,Gus,Fring,Owner,555-0127,Food Service,200,United States
+Duff Beer Co,duffbeer.com,,,,,,,,
+Monsters Inc,monstersinc.com,sulley@monstersinc.com,James,Sullivan,Scarer,555-0128,Energy,3000,United States
+Acme Explosives,acme-explosives.com,wile@acme-explosives.com,Wile,Coyote,Buyer,555-0129,Manufacturing,5,United States
+Stark International,starkindustries.com,pepper@starkindustries.com,Pepper,Potts,COO,555-0130,Defense,15000,United States
+Nakatomi Trading Corp,nakatomi.com,,,,,,,,
+Rekall Inc,rekall.com,doug@rekall.com,Doug,Quaid,Client,555-0131,Entertainment,80,United States
+Very Big Corporation of America,vbca.com,,,,,,,,
+Very Big Corp of America,vbca.com,exec@vbca.com,,,,555-0132,Conglomerate,,United States
+Yoyodyne Propulsion,yoyodyne.com,howard@yoyodyne.com,Howard,Cosmo,Engineer,555-0133,Aerospace,,United States
+Multinational United,multinationalunited.com,,,,,,,,
+Praxis Corp,praxiscorp.com,zorin@praxiscorp.com,Max,Zorin,CEO,555-0134,Microelectronics,700,France
+Roxxon Energy Corp,roxxon.com,,,,,,,,
+Roxxon,roxxon.com,dario@roxxon.com,Dario,Agger,CEO,555-0135,Energy,9000,United States
+LexCorp,lexcorp.com,lex@lexcorp.com,Lex,Luthor,CEO,555-0136,Conglomerate,20000,United States
+Buy N Large,buynlarge.com,shelby@buynlarge.com,Shelby,Forthright,CEO,555-0137,Retail,,United States
+Sirius Cybernetics Corp,siriuscyber.com,,,,,,,,
+Sirius Cybernetics,siriuscyber.com,marvin@siriuscyber.com,,,Engineer,,Robotics,,
+Virtucon,virtucon.com,evil@virtucon.com,,,CEO,555-0138,Industrial,,United States
+Wonka Chocolate Factory,wonka.com,,,,,,,,
+Abstergo Industries,abstergo.com,vidic@abstergo.com,Alan,Vidic,Director,555-0139,Pharmaceuticals,,United States
+Panucci's Pizza,paunuccispizza.com,leela@panuccis.com,Turanga,Leela,Delivery Captain,555-0140,Food,10,United States
+Planet Express,planetexpress.com,fry@planetexpress.com,Philip,Fry,Delivery Boy,555-0141,Logistics,8,United States
+Momcorp,momcorp.com,,,,,,,,
+Spacely Sprockets,spacelysprockets.com,cosmo@spacelysprockets.com,Cosmo,Spacely,CEO,555-0142,Manufacturing,300,United States
+Cogswell Cosmic Cog Co,cogswellcogs.com,,,,,,,,
+Wernham Hogg,wernhamhogg.co.uk,david@wernhamhogg.co.uk,David,Brent,Regional Manager,555-0143,Paper,,United Kingdom
+Bluebell Enterprises,bluebellent.com,,,,,,,,
+Kruger Industrial Smoothing,krugerindustrial.com,newman@kruger.com,Newman,,Postal Contractor,,,,
+Vance Refrigeration,vancerefrigeration.com,kramer@vancerefrigeration.com,Cosmo,Kramer,Consultant,555-0144,Manufacturing,,United States
+Central Perk Holdings,centralperk.com,,,,,,,,
+Paper Street Soap Co,paperstreetsoap.com,tyler@paperstreetsoap.com,Tyler,Durden,Founder,555-0145,Consumer Goods,,United States
+Massive Dynamic Corp,massivedynamic.com,,,,,,,,
